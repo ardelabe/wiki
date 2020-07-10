@@ -10,3 +10,4 @@ Some issues that I faced was the comma (,), sometimes the runserver showed a sin
 The conclusion of 'Entry Page' was commited and pushed to GitHub. 
 
 2. Index Page
+I changed the list loop to generate a list of href with the titles available in entries folder. Seems to work, but
