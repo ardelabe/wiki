@@ -10,4 +10,5 @@ Some issues that I faced was the comma (,), sometimes the runserver showed a sin
 The conclusion of 'Entry Page' was commited and pushed to GitHub. 
 
 2. Index Page
-I changed the list loop to generate a list of href with the titles available in entries folder. Seems to work, but
+I changed the list loop to generate a list of href with the titles available in entries folder. Seems to work, but - there is something strange with all links: it is needed to double click the link to the browser take you to the next page. 
+Anywaysm the conclusion of 'Index page' was commited and pushed do GitHub. 
