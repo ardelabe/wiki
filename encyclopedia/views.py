@@ -11,5 +11,13 @@ def index(request):
     })
 
 #function to render layout
+#def title(request, title):
+#    return render(request, "encyclopedia/layout.html")
+
+#function to get the correct .md to render
+#still has some capitalization issues
 def title(request, title):
-    return render(request, "encyclopedia/layout.html")
+    return render(request, "encyclopedia/layout.html", {
+        "text": util.get_entry(title),
+        "title": title
+    })
