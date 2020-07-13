@@ -19,13 +19,37 @@ def title(request, title):
         "title": title,
     })
 
-#WORKING CODE
+#search function that comports partially macthing string
 def wiki(request):
-    print("the requested data is:", request.POST)
+    partmatch = []
+
+    # print("the requested data is:", request.POST) # test
     post_dict = request.POST
-    print("the inside data is:", post_dict['q'])
+    # print("the data inside 'q' is:", post_dict['q']) # test
     post_data = post_dict['q']
-    return render(request, "encyclopedia/title.html", {
-        "text": util.get_entry(post_data),
-        "title": post_data,
-    })
+
+    for entry in util.list_entries():
+        # print(entry) # test
+
+        # testa e retorna para caso de .capitalize()
+        if post_data.capitalize() == entry:
+            # print(post_data.capitalize(), "is equal to", entry.lower()) #test
+            post_data = post_data.capitalize()
+            return render(request, "encyclopedia/title.html", {
+                "text": util.get_entry(post_data),
+                "title": post_data,
+            })
+        # teste e retorna para o caso de .upper()
+        elif post_data.upper() == entry:
+            post_data = post_data.upper()
+            return render(request, "encyclopedia/title.html", {
+                "text": util.get_entry(post_data),
+                "title": post_data,
+            })
+        elif post_data.lower() in entry.lower():
+            # print(entry) #test
+            partmatch.append(entry)
+    # print(partmatch)     
+    return render(request, "encyclopedia/results.html", {
+        "entries": partmatch,
+        })
