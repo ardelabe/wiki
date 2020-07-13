@@ -12,3 +12,17 @@ The conclusion of 'Entry Page' was commited and pushed to GitHub.
 2. Index Page
 I changed the list loop to generate a list of href with the titles available in entries folder. Seems to work, but - there is something strange with all links: it is needed to double click the link to the browser take you to the next page. 
 Anywaysm the conclusion of 'Index page' was commited and pushed do GitHub. 
+
+3. Search
+Before start to work in Search, I corrected a mistake I made. I was modifying layout.html, but it wasn't the best idea - so i created title.html to inherit layout.html template and redirected title and text to title.html render the individual pages. The file layout.html now doesn't have strange lines. At last, I don't know if was this change - but that double click issue reported in 2. Index Page is not ocurring now. 
+QUERY MATCHES TASK.
+I had a really bat time trying to figure out how to solve this task. The first thing I tried was to use the wiki/<str:title> to receive back the POST data. But to configure this as a form, is expected that I provide a <str:title> value. So, I created another url, called just 'wiki', but to define a wiki function I not knew how to acess the data that came from form. 
+After some days watching tutorial videos and reading documentation, I figured that request.POST gives the data sent by a form - and it is possible to print this data. I printed and saw that the request.POST is, in fact, a dictionary. In my investigation, was: <QueryDict: {'csrfmiddlewaretoken': ['4qSFfVCKnoDtKfQG5QQ47NH8rhTJrNok50dqpwFKWJMpYfaUh1m0r39Qg5PfOLcd'], 'q': ['CSS']}>
+So, I reached the data I needed after these tests:
+def wiki(request):
+    print("the requested data is:", request.POST)
+    post_dict = request.POST
+    print("the inside data is:", post_dict['q'])
+    post_data = post_dict['q']
+And passed post_data as value to render the page. Probably I will only comment the excedent lines of code.  
+QUERY DOESN'T MATCH TASK.
