@@ -36,3 +36,10 @@ Wiki, now, has (a) takes the dict from POST and saves in post_data; (b) loops in
 
 4. NEW PAGE
 I had some trouble with this part, but at the end I could make things work. I used the method .get() to retrieve data from the request-dict as bonus of my research - because the initial mistake was not make an if statement to execute part of the code only when a form is submitted. After I corrected this part, all worked fine. The code still needs to be changed - there is two requisites to implement: (a) present error message if the page that the user is trying to create already exists; (b) redirect to the new entry's page on submit.
+
+REDIRECT TO THE NEW ENTRY. 
+Ok, I'll confess something - I don't really master the hability of working with GET and POST. So, to do this part, I only copied the part of code that renders the page from index function - it means that the page is 'redirected' - but not really... **it takes to the created page, but in the url /create**. That was predictable, because I'm spending a lot of time figuring out how to deal with some issues in views.py, and the urls.py is not generating many issues. I'll not gonna change it for now.
+
+ERROR MESSAGE
+I learned some new stuff with this part of New Page. Fist, I created conditions and loop inside views.create to identify when the user is trying to create a page with a title that already exists. I created a counter variable that turns 0> when 'if' finds an existing title. When it doesn't find: save and render new page. When find: don't save, and render create with error message. **There are capitalization issues**. 
+

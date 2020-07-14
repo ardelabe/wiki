@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django import forms
+from django.contrib import messages 
 
 from . import util
 
@@ -56,14 +57,28 @@ def wiki(request):
 
 def create(request):
     if request.method == "POST":
-        print('REQUESTED DATA:', request.POST) # test
+        repetcounter = 0
+        # print('REQUESTED DATA:', request.POST) # test
         post_dict = request.POST
-        print("the data inside 'createtitle' is", post_dict.get('createtitle'))
-        print("the data inside 'content' is", post_dict.get('content')) # test
+        # print("the data inside 'createtitle' is", post_dict.get('createtitle'))
+        # print("the data inside 'content' is", post_dict.get('content')) # test
         # print("title is", postdict['createtitle'], "and content is", postdict['content']) #test
         title = post_dict.get('createtitle')
         content = post_dict.get('content')
-        print(title)
-        print(content)
-        util.save_entry(title, content) 
+        # print(title)
+        # print(content)
+        for entry in util.list_entries():
+            if title == entry:
+                repetcounter += 1
+        if repetcounter == 0:
+            util.save_entry(title, content)
+            return render(request, "encyclopedia/title.html", {
+                "text": content,
+                "title": title,
+                })
+        else:
+            # print('error: the page exists - use edit instead') # test
+            # present error message
+            messages.error(request,"error: a page with the given title already exists - use 'Edit Page' instead")
+            return render(request, "encyclopedia/create.html")
     return render(request, "encyclopedia/create.html")

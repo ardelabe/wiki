@@ -1,0 +1,1 @@
+Gordinho is a Ghired's player
