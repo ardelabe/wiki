@@ -53,3 +53,17 @@ def wiki(request):
     return render(request, "encyclopedia/results.html", {
         "entries": partmatch,
         })
+
+def create(request):
+    if request.method == "POST":
+        print('REQUESTED DATA:', request.POST) # test
+        post_dict = request.POST
+        print("the data inside 'createtitle' is", post_dict.get('createtitle'))
+        print("the data inside 'content' is", post_dict.get('content')) # test
+        # print("title is", postdict['createtitle'], "and content is", postdict['content']) #test
+        title = post_dict.get('createtitle')
+        content = post_dict.get('content')
+        print(title)
+        print(content)
+        util.save_entry(title, content) 
+    return render(request, "encyclopedia/create.html")

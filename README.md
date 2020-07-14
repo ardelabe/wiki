@@ -20,7 +20,7 @@ Anywaysm the conclusion of 'Index page' was commited and pushed do GitHub.
 Before start to work in Search, I corrected a mistake I made. I was modifying layout.html, but it wasn't the best idea - so i created title.html to inherit layout.html template and redirected title and text to title.html render the individual pages. The file layout.html now doesn't have strange lines. At last, I don't know if was this change - but that double click issue reported in 2. Index Page is not ocurring now. 
 
 QUERY MATCHES TASK.
-I had a really bat time trying to figure out how to solve this task. The first thing I tried was to use the wiki/<str:title> to receive back the POST data. But to configure this as a form, is expected that I provide a <str:title> value. So, I created another url, called just 'wiki', but to define a wiki function I not knew how to acess the data that came from form. 
+I had a really bad time trying to figure out how to solve this task. The first thing I tried was to use the wiki/<str:title> to receive back the POST data. But to configure this as a form, is expected that I provide a <str:title> value. So, I created another url, called just 'wiki', but to define a wiki function I not knew how to acess the data that came from form. 
 After some days watching tutorial videos and reading documentation, I figured that request.POST gives the data sent by a form - and it is possible to print this data. I printed and saw that the request.POST is, in fact, a dictionary. In my investigation, was: <QueryDict: {'csrfmiddlewaretoken': ['4qSFfVCKnoDtKfQG5QQ47NH8rhTJrNok50dqpwFKWJMpYfaUh1m0r39Qg5PfOLcd'], 'q': ['CSS']}>
 So, I reached the data I needed after these tests:
 def wiki(request):
@@ -33,3 +33,6 @@ And passed post_data as value to render the page. Probably I will only comment t
 QUERY DOESN'T MATCH TASK.
 This part was very pleasant to develop. Not in this order: I created a url to results and a results.html. The corresponding funcion in view was an alteration of wiki. 
 Wiki, now, has (a) takes the dict from POST and saves in post_data; (b) loops into the list of saved entries; (c) if statement checks if the capitalized post_data is equal to an entry - if True, reders the page; (d) elif cheks if post_data.upper() is equal to an entry - if True, renders de page; (e) elif checks if there is a substring in post_data that matches entry (independent of case) and populates a list if True; (f) at the end, if only the list was populated, the wiki function renders results.html with links corresponding the list. 
+
+4. NEW PAGE
+I had some trouble with this part, but at the end I could make things work. I used the method .get() to retrieve data from the request-dict as bonus of my research - because the initial mistake was not make an if statement to execute part of the code only when a form is submitted. After I corrected this part, all worked fine. The code still needs to be changed - there is two requisites to implement: (a) present error message if the page that the user is trying to create already exists; (b) redirect to the new entry's page on submit.

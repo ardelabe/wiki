@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Create New Page:</h1>
+    <form action="{% url 'wiki:create' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="createtitle">
+        <label for="w3review">Please, enter the Markdown content for the page:</label>
+        <textarea id="w3review" name="content" rows="4" cols="50">
+            You can start to type your content here...
+        </textarea>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
