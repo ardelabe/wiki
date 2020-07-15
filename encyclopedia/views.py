@@ -5,23 +5,25 @@ from django.http import HttpResponseRedirect
 from django import forms
 from django.contrib import messages
 import random
+from markdown2 import Markdown
 
 from . import util
+
+markdowner = Markdown()
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
 
-#function to get the correct .md to render
-#still has some capitalization issues
 def title(request, title):
+    text = util.get_entry(title)
+    text = markdowner.convert(text)
     return render(request, "encyclopedia/title.html", {
-        "text": util.get_entry(title),
+        "text": text,
         "title": title,
     })
 
-#search function that comports partially macthing string
 def wiki(request):
     partmatch = []
 
@@ -29,7 +31,8 @@ def wiki(request):
     post_dict = request.POST
     # print("the data inside 'q' is:", post_dict['q']) # test
     post_data = post_dict['q']
-
+    text = util.get_entry(post_data)
+    text = markdowner.convert(text)
     for entry in util.list_entries():
         # print(entry) # test
 
@@ -38,14 +41,14 @@ def wiki(request):
             # print(post_data.capitalize(), "is equal to", entry.lower()) #test
             post_data = post_data.capitalize()
             return render(request, "encyclopedia/title.html", {
-                "text": util.get_entry(post_data),
+                "text": text,
                 "title": post_data,
             })
         # teste e retorna para o caso de .upper()
         elif post_data.upper() == entry:
             post_data = post_data.upper()
             return render(request, "encyclopedia/title.html", {
-                "text": util.get_entry(post_data),
+                "text": text,
                 "title": post_data,
             })
         elif post_data.lower() in entry.lower():
@@ -72,6 +75,7 @@ def create(request):
             if title == entry:
                 repetcounter += 1
         if repetcounter == 0:
+            content = markdowner.convert(content)
             util.save_entry(title, content)
             return render(request, "encyclopedia/title.html", {
                 "text": content,
@@ -105,7 +109,9 @@ def alea(request):
     title_list = util.list_entries()
     # print(title_list) # test
     title = random.choice(title_list)
+    text = util.get_entry(title)
+    text = markdowner.convert(text)
     return render(request, "encyclopedia/title.html", {
-        "text": util.get_entry(title),
+        "text": text,
         "title": title,
     })

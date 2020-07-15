@@ -1,7 +1,7 @@
 # wiki
 
 INTRODUCTION
-This is a report of my issues trying to solve the problem set 01 from the cs50w - Edx/Harvard course. The description of what the web-app must do can be found at https://cs50.harvard.edu/web/2020/projects/1/wiki/. 
+This is a report of my issues trying to solve the problem set 01 from the cs50w - Edx/Harvard course. The description of what the web-app must do can be found at https://cs50.harvard.edu/web/2020/projects/1/wiki/. Right below I'll use this file to register the issues I found on the development process. 
 
 1. ENTRY PAGE
 First, I prepared the files views.py and urls.py. In views.py I defined the funcion 
@@ -52,5 +52,6 @@ But I used import random to random.choice() the list of titles and passed this a
 I think this was a joke of cs50w, because I initially named all 'random' in .html, urls and views - later I figured that it colided with import random. 
 Anyways, it still a buggy code - but I'm moving on. 
 
-
+7. MARKDOWN TO HTML
+I choose to install the converter, so it was easy - just applyed the method. The tip they gave was important - in the placeholder I typed |safe: {{ text | safe }}. Before that, it was presenting the raw HTML on render. 
 
