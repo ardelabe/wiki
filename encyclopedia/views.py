@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django import forms
-from django.contrib import messages 
+from django.contrib import messages
+import random
 
 from . import util
 
@@ -82,3 +83,29 @@ def create(request):
             messages.error(request,"error: a page with the given title already exists - use 'Edit Page' instead")
             return render(request, "encyclopedia/create.html")
     return render(request, "encyclopedia/create.html")
+
+def edit(request, title):
+    if request.method == "POST":
+        # print(request.POST) # test
+        # print(request.GET) # test
+        post_dict = request.POST
+        util.save_entry(post_dict.get("title"), post_dict.get("content"))
+        return render(request, "encyclopedia/title.html", {
+            "text": post_dict.get("content"),
+            "title": title,
+            })
+    return render(request, "encyclopedia/edit.html", {
+        "text": util.get_entry(title),
+        "title": title,
+        })
+
+def alea(request):
+    # print(request.POST) # test
+    # print(request.GET) # test
+    title_list = util.list_entries()
+    # print(title_list) # test
+    title = random.choice(title_list)
+    return render(request, "encyclopedia/title.html", {
+        "text": util.get_entry(title),
+        "title": title,
+    })

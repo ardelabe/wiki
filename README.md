@@ -10,11 +10,9 @@ Next, I defined a second version of this funcion that stores the .md text in a v
 So, I went to layout.html and inserted with double curly bracers the text and the title in the proper locations. 
 For the error when the page does not exist, I modified the until.py, that returned None, when not found to retur a string. 
 Some issues that I faced was the comma (,), sometimes the runserver showed a sintax error because I forgot (now knew that it was needed) sometimes - also, I struggled, in view.py, to define function because I didn't knew if it was mandadory put a curlybracers or not sometimes.
-The conclusion of 'Entry Page' was commited and pushed to GitHub. 
 
 2. INDEX PAGE
 I changed the list loop to generate a list of href with the titles available in entries folder. Seems to work, but - there is something strange with all links: it is needed to double click the link to the browser take you to the next page. 
-Anywaysm the conclusion of 'Index page' was commited and pushed do GitHub. 
 
 3. SEARCH
 Before start to work in Search, I corrected a mistake I made. I was modifying layout.html, but it wasn't the best idea - so i created title.html to inherit layout.html template and redirected title and text to title.html render the individual pages. The file layout.html now doesn't have strange lines. At last, I don't know if was this change - but that double click issue reported in 2. Index Page is not ocurring now. 
@@ -42,4 +40,17 @@ Ok, I'll confess something - I don't really master the hability of working with 
 
 ERROR MESSAGE
 I learned some new stuff with this part of New Page. Fist, I created conditions and loop inside views.create to identify when the user is trying to create a page with a title that already exists. I created a counter variable that turns 0> when 'if' finds an existing title. When it doesn't find: save and render new page. When find: don't save, and render create with error message. **There are capitalization issues**. 
+
+5. EDIT PAGE
+The user can't edit the page title - I guess - so I remembered that the token info is passed inside the QueryDict without being displayed on screen. There is a type="hidden" inside the input, so I'm passing the title name back to the function via "hidden". 
+It is working. I took that data and used util.save_entry to overwrite the new data. 
+I advanced a little in this phase with the GET knowledge, because the edit funcion required value to be referenced back. But here, also there is something now completely right: **there is no properly redirect, the url remains /edit/ after saving data**. 
+
+6. RANDOM PAGE
+This part also was a breeze, but I figured some bugs when doing it, like: **if you search a page that does not exist, the h1 and the link to edit are shown**. 
+But I used import random to random.choice() the list of titles and passed this as **CONTEXT** argument.
+I think this was a joke of cs50w, because I initially named all 'random' in .html, urls and views - later I figured that it colided with import random. 
+Anyways, it still a buggy code - but I'm moving on. 
+
+
 

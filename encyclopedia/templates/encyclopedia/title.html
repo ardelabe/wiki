@@ -2,4 +2,10 @@
 
 {% block title %}{{ title }}{% endblock %}
 
-{% block body %}{{ text }}{% endblock %}
+{% block body %}
+<h1>This is the entry page of {{ title }}:</h1>
+<p></p>
+{{ text }}
+<p></p>
+<a href="/edit/{{ title }}">Click to edit</a>
+{% endblock %}
