@@ -11,6 +11,7 @@ Every article has a button to allow the user to edit it.
 
 ## How to run it?
 As the project is proposed in the CS50W course, it isn't running on any server. So it must be executed locally. To do it, it requires a computer running python, django and markdown2. 
+Clone the repository, choose the application directory and run the command: **~python manage.py runserver**
 
 ## Current status
 Finished.
