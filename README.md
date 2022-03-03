@@ -18,6 +18,6 @@ Finished.
 
 ## Developer
 Anderson Rafael Delattre Abe  
-GitHub: ardelabe  
-Twitter: @AndersonAbe2  
-Instagram: ar.delattreabe
+[GitHub: ardelabe](https://github.com/ardelabe)  
+[Twitter: @AndersonAbe2](https://twitter.com/AndersonAbe2)  
+[Instagram: ar.delattreabe](https://www.instagram.com/ar.delattreabe/)  
