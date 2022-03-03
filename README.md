@@ -1,25 +1,17 @@
 # WIKI - Project 1  (cs50w/2020)
 
-## Description 
+## Description
 This a wiki-like website developed with the specifications of Project 01 from cs50w - Edx/Harvard course. The description of what the web-app must do can be found at https://cs50.harvard.edu/web/2020/projects/1/wiki/. 
 
-Table of contents
-=================
-<!--ts-->
-   * [Sobre](#Sobre)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
-   * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-   * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
-<!--te-->
+## Features
 
-## Status
+## How to run it?
+
+## Who will use this repo or project?
+
+## What is the goal of this project?
+
+## Current status
 Finished.
 
 ## Features
@@ -27,9 +19,6 @@ Finished.
 - [x] Cadastro de usuário
 - [x] Cadastro de cliente
 - [ ] Cadastro de produtos
-
-## Demonstration
-
 
 1. ENTRY PAGE
 First, I prepared the files views.py and urls.py. In views.py I defined the funcion 
