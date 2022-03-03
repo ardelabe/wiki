@@ -17,4 +17,7 @@ Clone the repository, choose the application directory and run the command: **py
 Finished.
 
 ## Developer
-Anderson Rafael Delattre Abe (ardelabe)
+Anderson Rafael Delattre Abe 
+GitHub: ardelabe
+Twitter: @AndersonAbe2
+Instagram: ar.delattreabe
